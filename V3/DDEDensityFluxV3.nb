@@ -1,0 +1,2126 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 5.0'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[     68152,       1948]*)
+(*NotebookOutlinePosition[     68921,       1974]*)
+(*  CellTagsIndexPosition[     68877,       1970]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+Cell[BoxData[
+    \(\(\(\[IndentingNewLine]\)\( (*\ 
+      Set\ the\ directory\ where\ Mathematica\ can\ find\ the\ file . \ 
+          For\ example, \ 
+      SetDirectory["\<c:\\myDirectory\\subdirectory\>"]\ *) \)\)\)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(SetDirectory["\<d:\\demoDDEDensityFlux\\web2003\>"]\)], "Input"],
+
+Cell[BoxData[
+    \("d:\\demoDDEDensityFlux\\web2003"\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Get["\<DDEDensityFluxV3.m\>"]\)], "Input"],
+
+Cell[BoxData[
+    \("Discrete Homotopy Operator (October 3, 2009) loaded successfully."\)], \
+"Print"],
+
+Cell[BoxData[
+    \("DDEDensityFluxV3.m (code of August 5, 2009) loaded successfully."\)], \
+"Print"],
+
+Cell[BoxData[
+    \(" "\)], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("  *** MENU INTERFACE ***  (page: "\[InvisibleSpace]1\
+\[InvisibleSpace]")"\),
+      SequenceForm[ "  *** MENU INTERFACE ***  (page: ", 1, ")"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("-------------------------------------------"\)], "Print"],
+
+Cell[BoxData[
+    \("  1) Kac-van Moerbeke (or Volterra) Lattice (d_kdv.m)"\)], "Print"],
+
+Cell[BoxData[
+    \("  2) Modified KdV Lattice (with parameter) (d_mkdv.m)"\)], "Print"],
+
+Cell[BoxData[
+    \("  3) Modified (quadratic) Volterra Lattice (d_modvol.m)"\)], "Print"],
+
+Cell[BoxData[
+    \("  4) Ablowitz-Ladik Discretization of NLS Equation (d_ablnl1.m)"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("  5) Toda Lattice (d_toda.m)"\)], "Print"],
+
+Cell[BoxData[
+    \("  6) Standard Discretization of NLS Equation (d_stdnls.m)"\)], "Print"],
+
+Cell[BoxData[
+    \("  7) Herbst/Taha Discretization of KdV Equation (d_diskdv.m)"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("  8) Herbst/Taha Discretization of mKdV Equation (d_dimkdv.m)"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("  9) Herbst/Taha Discretization of combined KdV-mKdV Equation \
+(d_herbs1.m)"\)], "Print"],
+
+Cell[BoxData[
+    \("  10) Self-Dual Network Lattice (d_dual.m)"\)], "Print"],
+
+Cell[BoxData[
+    \(" nn) Next Page"\)], "Print"],
+
+Cell[BoxData[
+    \(" tt) Your System"\)], "Print"],
+
+Cell[BoxData[
+    \(" qq) Exit the Program"\)], "Print"],
+
+Cell[BoxData[
+    \("------------------------------------------"\)], "Print"],
+
+Cell[BoxData[
+    \("*********************************************************"\)], "Print"],
+
+Cell[BoxData[
+    \("  WELCOME TO THE MATHEMATICA PROGRAM DDEDensityFlux.m    "\)], "Print"],
+
+Cell[BoxData[
+    \("     by UNAL GOKTAS, WILLY HEREMAN, AND HOLLY EKLUND     "\)], "Print"],
+
+Cell[BoxData[
+    \(" FOR THE COMPUTATION OF CONSERVED DENSITIES AND FLUXES.  "\)], "Print"],
+
+Cell[BoxData[
+    \("      Version 2.0 released on October 4, 2003            "\)], "Print"],
+
+Cell[BoxData[
+    \("          Last updated on August 5, 2009                 "\)], "Print"],
+
+Cell[BoxData[
+    \("             Copyright 1998-2003                         "\)], "Print"],
+
+Cell[BoxData[
+    \("*********************************************************"\)], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Working with the data file for the \
+"\[InvisibleSpace]"Kac-van Moerbeke (or Volterra) \
+Equation"\[InvisibleSpace]"."\),
+      SequenceForm[ 
+      "Working with the data file for the ", 
+        "Kac-van Moerbeke (or Volterra) Equation", "."],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \(" "\)], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Equation "\[InvisibleSpace]1\[InvisibleSpace]" of \
+the system with "\[InvisibleSpace]1\[InvisibleSpace]" equation(s):"\),
+      SequenceForm[ 
+      "Equation ", 1, " of the system with ", 1, " equation(s):"],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \(" "\)], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[
+      RowBox[{"\<\"  \"\>", "\[InvisibleSpace]", 
+        SuperscriptBox[
+          RowBox[{"(", 
+            InterpretationBox[
+              RowBox[{"u", "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_1\),
+                  Subscript[ 1],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_","\),
+                  Subscript[ ","],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_n\),
+                  Subscript[ n],
+                  Editable->False]}],
+              SequenceForm[ u, 
+                Subscript[ 1], 
+                Subscript[ ","], 
+                Subscript[ n]],
+              Editable->False], ")"}], "\[Prime]",
+          MultilineFunction->None], "\[InvisibleSpace]", "\<\" = \"\>", 
+        "\[InvisibleSpace]", 
+        RowBox[{
+          RowBox[{"(", 
+            InterpretationBox[
+              RowBox[{"u", "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_1\),
+                  Subscript[ 1],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_","\),
+                  Subscript[ ","],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_n\),
+                  Subscript[ n],
+                  Editable->False]}],
+              SequenceForm[ u, 
+                Subscript[ 1], 
+                Subscript[ ","], 
+                Subscript[ n]],
+              Editable->False], ")"}], " ", 
+          RowBox[{"(", 
+            RowBox[{
+              RowBox[{"-", 
+                RowBox[{"(", 
+                  InterpretationBox[
+                    RowBox[{"u", "\[InvisibleSpace]", 
+                      InterpretationBox[\(\[Null]\_1\),
+                        Subscript[ 1],
+                        Editable->False], "\[InvisibleSpace]", 
+                      InterpretationBox[\(\[Null]\_","\),
+                        Subscript[ ","],
+                        Editable->False], "\[InvisibleSpace]", 
+                      InterpretationBox[\(\[Null]\_\(\(-1\) + n\)\),
+                        Subscript[ 
+                          Plus[ -1, n]],
+                        Editable->False]}],
+                    SequenceForm[ u, 
+                      Subscript[ 1], 
+                      Subscript[ ","], 
+                      Subscript[ 
+                        Plus[ -1, n]]],
+                    Editable->False], ")"}]}], "+", 
+              InterpretationBox[
+                RowBox[{"u", "\[InvisibleSpace]", 
+                  InterpretationBox[\(\[Null]\_1\),
+                    Subscript[ 1],
+                    Editable->False], "\[InvisibleSpace]", 
+                  InterpretationBox[\(\[Null]\_","\),
+                    Subscript[ ","],
+                    Editable->False], "\[InvisibleSpace]", 
+                  InterpretationBox[\(\[Null]\_\(1 + n\)\),
+                    Subscript[ 
+                      Plus[ 1, n]],
+                    Editable->False]}],
+                SequenceForm[ u, 
+                  Subscript[ 1], 
+                  Subscript[ ","], 
+                  Subscript[ 
+                    Plus[ 1, n]]],
+                Editable->False]}], ")"}]}]}],
+      SequenceForm[ "  ", 
+        Derivative[ 1][ 
+          SequenceForm[ u, 
+            Subscript[ 1], 
+            Subscript[ ","], 
+            Subscript[ n]]], " = ", 
+        Times[ 
+          SequenceForm[ u, 
+            Subscript[ 1], 
+            Subscript[ ","], 
+            Subscript[ n]], 
+          Plus[ 
+            Times[ -1, 
+              SequenceForm[ u, 
+                Subscript[ 1], 
+                Subscript[ ","], 
+                Subscript[ 
+                  Plus[ -1, n]]]], 
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ 
+                Plus[ 1, n]]]]]],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \(" "\)], "Print"],
+
+Cell[BoxData[
+    \(" "\)], "Print"],
+
+Cell[BoxData[
+    \("LINEAR SYSTEM FOR THE WEIGHTS corresponding to Scale0 with w(d/dt)=0:"\
+\)], "Print"],
+
+Cell[BoxData[
+    \({zeroweightu[1] \[Equal] 2\ zeroweightu[1]}\)], "Print"],
+
+Cell[BoxData[
+    \("SOLUTION OF THE SCALING EQUATIONS for Scale0 with w(d/dt)=0:"\)], \
+"Print"],
+
+Cell[BoxData[
+    \({zeroweightu[1] \[Rule] 0}\)], "Print"],
+
+Cell[BoxData[
+    \("LINEAR SYSTEM FOR THE WEIGHTS corresponding to Scale1 with w(d/dt)=1:"\
+\)], "Print"],
+
+Cell[BoxData[
+    \({2\ weightu[1] \[Equal] 1 + weightu[1]}\)], "Print"],
+
+Cell[BoxData[
+    \("SOLUTION OF THE SCALING EQUATIONS for Scale1 with w(d/dt)=1: "\)], \
+"Print"],
+
+Cell[BoxData[
+    \({weightu[1] \[Rule] 1}\)], "Print"],
+
+Cell[BoxData[
+    \(" "\)], "Print"],
+
+Cell[BoxData[
+    \("Program determines the weights of the variables (and parameters)"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("corresponding to Scale1 with w(d/dt)=1."\)], "Print"],
+
+Cell[BoxData[
+    \("For the given system:"\)], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("* weight of u["\[InvisibleSpace]1\[InvisibleSpace]"] \
+and all its shifts is "\[InvisibleSpace]1\[InvisibleSpace]"."\),
+      SequenceForm[ "* weight of u[", 1, "] and all its shifts is ", 1, "."],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \(" "\)], "Print"],
+
+Cell[BoxData[
+    \("The rank of rho should be an integer multiple of the lowest weight \
+"\)], "Print"],
+
+Cell[BoxData[
+    \("of the DEPENDENT variable(s). Fractional weights are allowed."\)], \
+"Print"],
+
+Cell[BoxData[
+    \(" "\)], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Computation of the density (and flux) of RANK = "\
+\[InvisibleSpace]4\[InvisibleSpace]"."\),
+      SequenceForm[ 
+      "Computation of the density (and flux) of RANK = ", 4, "."],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("AN EXTRA SCALE (Scale0) BASED ON w(d/dt)=0 CAN NOT BE USED!"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("Starting the construction of the form of the density"\)], "Print"],
+
+Cell[BoxData[
+    \("with the single-scale (Scale1) routine based on w(d/dt)=1."\)], "Print"],
+
+Cell[BoxData[
+    \(" "\)], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("For RANK = "\[InvisibleSpace]4\[InvisibleSpace]", \
+this is the form of the density rho: "\),
+      SequenceForm[ 
+      "For RANK = ", 4, ", this is the form of the density rho: "],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \(" "\)], "Print"],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{\(c[1]\), " ", 
+        SuperscriptBox[
+          RowBox[{"(", 
+            InterpretationBox[
+              RowBox[{"u", "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_1\),
+                  Subscript[ 1],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_","\),
+                  Subscript[ ","],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_n\),
+                  Subscript[ n],
+                  Editable->False]}],
+              SequenceForm[ u, 
+                Subscript[ 1], 
+                Subscript[ ","], 
+                Subscript[ n]],
+              Editable->False], ")"}], "4"]}], "+", 
+      RowBox[{\(c[2]\), " ", 
+        SuperscriptBox[
+          RowBox[{"(", 
+            InterpretationBox[
+              RowBox[{"u", "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_1\),
+                  Subscript[ 1],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_","\),
+                  Subscript[ ","],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_n\),
+                  Subscript[ n],
+                  Editable->False]}],
+              SequenceForm[ u, 
+                Subscript[ 1], 
+                Subscript[ ","], 
+                Subscript[ n]],
+              Editable->False], ")"}], "3"], " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_\(1 + n\)\),
+                Subscript[ 
+                  Plus[ 1, n]],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ 
+                Plus[ 1, n]]],
+            Editable->False], ")"}]}], "+", 
+      RowBox[{\(c[3]\), " ", 
+        SuperscriptBox[
+          RowBox[{"(", 
+            InterpretationBox[
+              RowBox[{"u", "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_1\),
+                  Subscript[ 1],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_","\),
+                  Subscript[ ","],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_n\),
+                  Subscript[ n],
+                  Editable->False]}],
+              SequenceForm[ u, 
+                Subscript[ 1], 
+                Subscript[ ","], 
+                Subscript[ n]],
+              Editable->False], ")"}], "2"], " ", 
+        SuperscriptBox[
+          RowBox[{"(", 
+            InterpretationBox[
+              RowBox[{"u", "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_1\),
+                  Subscript[ 1],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_","\),
+                  Subscript[ ","],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_\(1 + n\)\),
+                  Subscript[ 
+                    Plus[ 1, n]],
+                  Editable->False]}],
+              SequenceForm[ u, 
+                Subscript[ 1], 
+                Subscript[ ","], 
+                Subscript[ 
+                  Plus[ 1, n]]],
+              Editable->False], ")"}], "2"]}], "+", 
+      RowBox[{\(c[4]\), " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_n\),
+                Subscript[ n],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ n]],
+            Editable->False], ")"}], " ", 
+        SuperscriptBox[
+          RowBox[{"(", 
+            InterpretationBox[
+              RowBox[{"u", "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_1\),
+                  Subscript[ 1],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_","\),
+                  Subscript[ ","],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_\(1 + n\)\),
+                  Subscript[ 
+                    Plus[ 1, n]],
+                  Editable->False]}],
+              SequenceForm[ u, 
+                Subscript[ 1], 
+                Subscript[ ","], 
+                Subscript[ 
+                  Plus[ 1, n]]],
+              Editable->False], ")"}], "3"]}], "+", 
+      RowBox[{\(c[5]\), " ", 
+        SuperscriptBox[
+          RowBox[{"(", 
+            InterpretationBox[
+              RowBox[{"u", "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_1\),
+                  Subscript[ 1],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_","\),
+                  Subscript[ ","],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_n\),
+                  Subscript[ n],
+                  Editable->False]}],
+              SequenceForm[ u, 
+                Subscript[ 1], 
+                Subscript[ ","], 
+                Subscript[ n]],
+              Editable->False], ")"}], "2"], " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_\(1 + n\)\),
+                Subscript[ 
+                  Plus[ 1, n]],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ 
+                Plus[ 1, n]]],
+            Editable->False], ")"}], " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_\(2 + n\)\),
+                Subscript[ 
+                  Plus[ 2, n]],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ 
+                Plus[ 2, n]]],
+            Editable->False], ")"}]}], "+", 
+      RowBox[{\(c[6]\), " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_n\),
+                Subscript[ n],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ n]],
+            Editable->False], ")"}], " ", 
+        SuperscriptBox[
+          RowBox[{"(", 
+            InterpretationBox[
+              RowBox[{"u", "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_1\),
+                  Subscript[ 1],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_","\),
+                  Subscript[ ","],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_\(1 + n\)\),
+                  Subscript[ 
+                    Plus[ 1, n]],
+                  Editable->False]}],
+              SequenceForm[ u, 
+                Subscript[ 1], 
+                Subscript[ ","], 
+                Subscript[ 
+                  Plus[ 1, n]]],
+              Editable->False], ")"}], "2"], " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_\(2 + n\)\),
+                Subscript[ 
+                  Plus[ 2, n]],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ 
+                Plus[ 2, n]]],
+            Editable->False], ")"}]}], "+", 
+      RowBox[{\(c[7]\), " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_n\),
+                Subscript[ n],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ n]],
+            Editable->False], ")"}], " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_\(1 + n\)\),
+                Subscript[ 
+                  Plus[ 1, n]],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ 
+                Plus[ 1, n]]],
+            Editable->False], ")"}], " ", 
+        SuperscriptBox[
+          RowBox[{"(", 
+            InterpretationBox[
+              RowBox[{"u", "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_1\),
+                  Subscript[ 1],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_","\),
+                  Subscript[ ","],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_\(2 + n\)\),
+                  Subscript[ 
+                    Plus[ 2, n]],
+                  Editable->False]}],
+              SequenceForm[ u, 
+                Subscript[ 1], 
+                Subscript[ ","], 
+                Subscript[ 
+                  Plus[ 2, n]]],
+              Editable->False], ")"}], "2"]}], "+", 
+      RowBox[{\(c[8]\), " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_n\),
+                Subscript[ n],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ n]],
+            Editable->False], ")"}], " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_\(1 + n\)\),
+                Subscript[ 
+                  Plus[ 1, n]],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ 
+                Plus[ 1, n]]],
+            Editable->False], ")"}], " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_\(2 + n\)\),
+                Subscript[ 
+                  Plus[ 2, n]],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ 
+                Plus[ 2, n]]],
+            Editable->False], ")"}], " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_\(3 + n\)\),
+                Subscript[ 
+                  Plus[ 3, n]],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ 
+                Plus[ 3, n]]],
+            Editable->False], ")"}]}]}]], "Print"],
+
+Cell[BoxData[
+    \(" "\)], "Print"],
+
+Cell[BoxData[
+    \("Starting the construction of the system for the c[i]."\)], "Print"],
+
+Cell[BoxData[
+    \("APPLICATION OF DISCRETE EULER ROUTINE TO COMPUTE THE LINEAR \
+SYSTEM!"\)], "Print"],
+
+Cell[BoxData[
+    \("Applying DiscreteEulerD operator (discrete variational \
+derivative)"\)], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("w.r.t. variable "\[InvisibleSpace]\(u[1]\)[n, 
+          t]\[InvisibleSpace]" ."\),
+      SequenceForm[ "w.r.t. variable ", 
+        u[ 1][ n, t], " ."],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("Finished with application of DiscreteEulerD."\)], "Print"],
+
+Cell[BoxData[
+    \("Finished the construction of system for c[i]."\)], "Print"],
+
+Cell[BoxData[
+    \("Starting the first simplification of the system for the c[i]."\)], \
+"Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("The unsimplified system has "\[InvisibleSpace]58\
+\[InvisibleSpace]" equations."\),
+      SequenceForm[ "The unsimplified system has ", 58, " equations."],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("Finished the first simplification of the system for the c[i]."\)], \
+"Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("The simplified system has "\[InvisibleSpace]14\
+\[InvisibleSpace]" equations."\),
+      SequenceForm[ "The simplified system has ", 14, " equations."],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("The following parameters are assumed to be nonzero:"\)], "Print"],
+
+Cell[BoxData[
+    \({}\)], "Print"],
+
+Cell[BoxData[
+    \("This is system for the c[i] (to be solved): "\)], "Print"],
+
+Cell[BoxData[
+    \(" "\)], "Print"],
+
+Cell[BoxData[
+    \({\(-c[7]\) + c[8] \[Equal] 0, 
+      c[5] - c[8] \[Equal] 0, \(-c[6]\) + 2\ c[7] \[Equal] 
+        0, \(-c[4]\) + c[7] \[Equal] 0, 
+      c[5] - c[7] \[Equal] 0, \(-2\)\ c[5] + c[6] \[Equal] 0, 
+      c[2] - c[5] \[Equal] 0, \(-4\)\ c[1] + c[4] \[Equal] 0, 
+      c[2] - c[4] \[Equal] 0, 2\ c[3] - 3\ c[4] \[Equal] 0, 
+      3\ c[2] - 2\ c[3] \[Equal] 0, 4\ c[1] - c[2] \[Equal] 0, 
+      2\ c[3] - 2\ c[6] + c[7] \[Equal] 0, 
+      2\ c[3] + c[5] - 2\ c[6] \[Equal] 0}\)], "Print"],
+
+Cell[BoxData[
+    \(" "\)], "Print"],
+
+Cell[BoxData[
+    \("List of unknown coefficients c[i]: "\)], "Print"],
+
+Cell[BoxData[
+    \({c[1], c[2], c[3], c[4], c[5], c[6], c[7], c[8]}\)], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Starting the solution of this system with "\
+\[InvisibleSpace]14\[InvisibleSpace]" equations."\),
+      SequenceForm[ 
+      "Starting the solution of this system with ", 14, " equations."],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    RowBox[{\(Solve::"svars"\), \(\(:\)\(\ \)\), "\<\"Equations may not give \
+solutions for all \\\"solve\\\" variables. \\!\\(\\*ButtonBox[\\\"More\
+\[Ellipsis]\\\", ButtonStyle->\\\"RefGuideLinkText\\\", ButtonFrame->None, \
+ButtonData:>\\\"Solve::svars\\\"]\\)\"\>"}]], "Message"],
+
+Cell[BoxData[
+    \("Solution of the system: "\)], "Print"],
+
+Cell[BoxData[
+    \(" "\)], "Print"],
+
+Cell[BoxData[
+    \({c[1] \[Rule] c[8]\/4, c[2] \[Rule] c[8], c[3] \[Rule] \(3\ c[8]\)\/2, 
+      c[4] \[Rule] c[8], c[5] \[Rule] c[8], c[6] \[Rule] 2\ c[8], 
+      c[7] \[Rule] c[8]}\)], "Print"],
+
+Cell[BoxData[
+    \(" "\)], "Print"],
+
+Cell[BoxData[
+    \("Starting the computation of J_n with the discrete homotopy \
+operator!"\)], "Print"],
+
+Cell[BoxData[
+    \("Finished the computation of J_n with the discrete homotopy \
+operator!"\)], "Print"],
+
+Cell[BoxData[
+    \(" "\)], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Result of explicit verification: D_t (rho) - J_n + \
+J_{n+1} = "\[InvisibleSpace]0\),
+      SequenceForm[ 
+      "Result of explicit verification: D_t (rho) - J_n + J_{n+1} = ", 0],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("Density rho and flux PASSED the test!"\)], "Print"],
+
+Cell[BoxData[
+    \(" "\)], "Print"],
+
+Cell[BoxData[
+    \("***************************************************************"\)], \
+"Print"],
+
+Cell[BoxData[
+    \(" "\)], "Print"],
+
+Cell[BoxData[
+    \("This is the density, rho: "\)], "Print"],
+
+Cell[BoxData[
+    \(" "\)], "Print"],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{\(1\/4\), " ", 
+        SuperscriptBox[
+          RowBox[{"(", 
+            InterpretationBox[
+              RowBox[{"u", "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_1\),
+                  Subscript[ 1],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_","\),
+                  Subscript[ ","],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_n\),
+                  Subscript[ n],
+                  Editable->False]}],
+              SequenceForm[ u, 
+                Subscript[ 1], 
+                Subscript[ ","], 
+                Subscript[ n]],
+              Editable->False], ")"}], "4"]}], "+", 
+      RowBox[{
+        SuperscriptBox[
+          RowBox[{"(", 
+            InterpretationBox[
+              RowBox[{"u", "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_1\),
+                  Subscript[ 1],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_","\),
+                  Subscript[ ","],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_n\),
+                  Subscript[ n],
+                  Editable->False]}],
+              SequenceForm[ u, 
+                Subscript[ 1], 
+                Subscript[ ","], 
+                Subscript[ n]],
+              Editable->False], ")"}], "3"], " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_\(1 + n\)\),
+                Subscript[ 
+                  Plus[ 1, n]],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ 
+                Plus[ 1, n]]],
+            Editable->False], ")"}]}], "+", 
+      RowBox[{\(3\/2\), " ", 
+        SuperscriptBox[
+          RowBox[{"(", 
+            InterpretationBox[
+              RowBox[{"u", "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_1\),
+                  Subscript[ 1],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_","\),
+                  Subscript[ ","],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_n\),
+                  Subscript[ n],
+                  Editable->False]}],
+              SequenceForm[ u, 
+                Subscript[ 1], 
+                Subscript[ ","], 
+                Subscript[ n]],
+              Editable->False], ")"}], "2"], " ", 
+        SuperscriptBox[
+          RowBox[{"(", 
+            InterpretationBox[
+              RowBox[{"u", "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_1\),
+                  Subscript[ 1],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_","\),
+                  Subscript[ ","],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_\(1 + n\)\),
+                  Subscript[ 
+                    Plus[ 1, n]],
+                  Editable->False]}],
+              SequenceForm[ u, 
+                Subscript[ 1], 
+                Subscript[ ","], 
+                Subscript[ 
+                  Plus[ 1, n]]],
+              Editable->False], ")"}], "2"]}], "+", 
+      RowBox[{
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_n\),
+                Subscript[ n],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ n]],
+            Editable->False], ")"}], " ", 
+        SuperscriptBox[
+          RowBox[{"(", 
+            InterpretationBox[
+              RowBox[{"u", "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_1\),
+                  Subscript[ 1],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_","\),
+                  Subscript[ ","],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_\(1 + n\)\),
+                  Subscript[ 
+                    Plus[ 1, n]],
+                  Editable->False]}],
+              SequenceForm[ u, 
+                Subscript[ 1], 
+                Subscript[ ","], 
+                Subscript[ 
+                  Plus[ 1, n]]],
+              Editable->False], ")"}], "3"]}], "+", 
+      RowBox[{
+        SuperscriptBox[
+          RowBox[{"(", 
+            InterpretationBox[
+              RowBox[{"u", "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_1\),
+                  Subscript[ 1],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_","\),
+                  Subscript[ ","],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_n\),
+                  Subscript[ n],
+                  Editable->False]}],
+              SequenceForm[ u, 
+                Subscript[ 1], 
+                Subscript[ ","], 
+                Subscript[ n]],
+              Editable->False], ")"}], "2"], " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_\(1 + n\)\),
+                Subscript[ 
+                  Plus[ 1, n]],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ 
+                Plus[ 1, n]]],
+            Editable->False], ")"}], " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_\(2 + n\)\),
+                Subscript[ 
+                  Plus[ 2, n]],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ 
+                Plus[ 2, n]]],
+            Editable->False], ")"}]}], "+", 
+      RowBox[{"2", " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_n\),
+                Subscript[ n],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ n]],
+            Editable->False], ")"}], " ", 
+        SuperscriptBox[
+          RowBox[{"(", 
+            InterpretationBox[
+              RowBox[{"u", "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_1\),
+                  Subscript[ 1],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_","\),
+                  Subscript[ ","],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_\(1 + n\)\),
+                  Subscript[ 
+                    Plus[ 1, n]],
+                  Editable->False]}],
+              SequenceForm[ u, 
+                Subscript[ 1], 
+                Subscript[ ","], 
+                Subscript[ 
+                  Plus[ 1, n]]],
+              Editable->False], ")"}], "2"], " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_\(2 + n\)\),
+                Subscript[ 
+                  Plus[ 2, n]],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ 
+                Plus[ 2, n]]],
+            Editable->False], ")"}]}], "+", 
+      RowBox[{
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_n\),
+                Subscript[ n],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ n]],
+            Editable->False], ")"}], " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_\(1 + n\)\),
+                Subscript[ 
+                  Plus[ 1, n]],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ 
+                Plus[ 1, n]]],
+            Editable->False], ")"}], " ", 
+        SuperscriptBox[
+          RowBox[{"(", 
+            InterpretationBox[
+              RowBox[{"u", "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_1\),
+                  Subscript[ 1],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_","\),
+                  Subscript[ ","],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_\(2 + n\)\),
+                  Subscript[ 
+                    Plus[ 2, n]],
+                  Editable->False]}],
+              SequenceForm[ u, 
+                Subscript[ 1], 
+                Subscript[ ","], 
+                Subscript[ 
+                  Plus[ 2, n]]],
+              Editable->False], ")"}], "2"]}], "+", 
+      RowBox[{
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_n\),
+                Subscript[ n],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ n]],
+            Editable->False], ")"}], " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_\(1 + n\)\),
+                Subscript[ 
+                  Plus[ 1, n]],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ 
+                Plus[ 1, n]]],
+            Editable->False], ")"}], " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_\(2 + n\)\),
+                Subscript[ 
+                  Plus[ 2, n]],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ 
+                Plus[ 2, n]]],
+            Editable->False], ")"}], " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_\(3 + n\)\),
+                Subscript[ 
+                  Plus[ 3, n]],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ 
+                Plus[ 3, n]]],
+            Editable->False], ")"}]}]}]], "Print"],
+
+Cell[BoxData[
+    \(" "\)], "Print"],
+
+Cell[BoxData[
+    \("The density has no free coefficients"\)], "Print"],
+
+Cell[BoxData[
+    \("Saving the density in an output file."\)], "Print"],
+
+Cell[BoxData[
+    \("***************************************************************"\)], \
+"Print"],
+
+Cell[BoxData[
+    \(" "\)], "Print"],
+
+Cell[BoxData[
+    \("The corresponding flux J_n is: "\)], "Print"],
+
+Cell[BoxData[
+    \(" "\)], "Print"],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{
+        RowBox[{"-", 
+          RowBox[{"(", 
+            InterpretationBox[
+              RowBox[{"u", "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_1\),
+                  Subscript[ 1],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_","\),
+                  Subscript[ ","],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_\(\(-1\) + n\)\),
+                  Subscript[ 
+                    Plus[ -1, n]],
+                  Editable->False]}],
+              SequenceForm[ u, 
+                Subscript[ 1], 
+                Subscript[ ","], 
+                Subscript[ 
+                  Plus[ -1, n]]],
+              Editable->False], ")"}]}], " ", 
+        SuperscriptBox[
+          RowBox[{"(", 
+            InterpretationBox[
+              RowBox[{"u", "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_1\),
+                  Subscript[ 1],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_","\),
+                  Subscript[ ","],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_n\),
+                  Subscript[ n],
+                  Editable->False]}],
+              SequenceForm[ u, 
+                Subscript[ 1], 
+                Subscript[ ","], 
+                Subscript[ n]],
+              Editable->False], ")"}], "4"]}], "-", 
+      RowBox[{"3", " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_\(\(-1\) + n\)\),
+                Subscript[ 
+                  Plus[ -1, n]],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ 
+                Plus[ -1, n]]],
+            Editable->False], ")"}], " ", 
+        SuperscriptBox[
+          RowBox[{"(", 
+            InterpretationBox[
+              RowBox[{"u", "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_1\),
+                  Subscript[ 1],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_","\),
+                  Subscript[ ","],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_n\),
+                  Subscript[ n],
+                  Editable->False]}],
+              SequenceForm[ u, 
+                Subscript[ 1], 
+                Subscript[ ","], 
+                Subscript[ n]],
+              Editable->False], ")"}], "3"], " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_\(1 + n\)\),
+                Subscript[ 
+                  Plus[ 1, n]],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ 
+                Plus[ 1, n]]],
+            Editable->False], ")"}]}], "-", 
+      RowBox[{"3", " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_\(\(-1\) + n\)\),
+                Subscript[ 
+                  Plus[ -1, n]],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ 
+                Plus[ -1, n]]],
+            Editable->False], ")"}], " ", 
+        SuperscriptBox[
+          RowBox[{"(", 
+            InterpretationBox[
+              RowBox[{"u", "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_1\),
+                  Subscript[ 1],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_","\),
+                  Subscript[ ","],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_n\),
+                  Subscript[ n],
+                  Editable->False]}],
+              SequenceForm[ u, 
+                Subscript[ 1], 
+                Subscript[ ","], 
+                Subscript[ n]],
+              Editable->False], ")"}], "2"], " ", 
+        SuperscriptBox[
+          RowBox[{"(", 
+            InterpretationBox[
+              RowBox[{"u", "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_1\),
+                  Subscript[ 1],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_","\),
+                  Subscript[ ","],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_\(1 + n\)\),
+                  Subscript[ 
+                    Plus[ 1, n]],
+                  Editable->False]}],
+              SequenceForm[ u, 
+                Subscript[ 1], 
+                Subscript[ ","], 
+                Subscript[ 
+                  Plus[ 1, n]]],
+              Editable->False], ")"}], "2"]}], "-", 
+      RowBox[{
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_\(\(-1\) + n\)\),
+                Subscript[ 
+                  Plus[ -1, n]],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ 
+                Plus[ -1, n]]],
+            Editable->False], ")"}], " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_n\),
+                Subscript[ n],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ n]],
+            Editable->False], ")"}], " ", 
+        SuperscriptBox[
+          RowBox[{"(", 
+            InterpretationBox[
+              RowBox[{"u", "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_1\),
+                  Subscript[ 1],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_","\),
+                  Subscript[ ","],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_\(1 + n\)\),
+                  Subscript[ 
+                    Plus[ 1, n]],
+                  Editable->False]}],
+              SequenceForm[ u, 
+                Subscript[ 1], 
+                Subscript[ ","], 
+                Subscript[ 
+                  Plus[ 1, n]]],
+              Editable->False], ")"}], "3"]}], "-", 
+      RowBox[{"2", " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_\(\(-1\) + n\)\),
+                Subscript[ 
+                  Plus[ -1, n]],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ 
+                Plus[ -1, n]]],
+            Editable->False], ")"}], " ", 
+        SuperscriptBox[
+          RowBox[{"(", 
+            InterpretationBox[
+              RowBox[{"u", "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_1\),
+                  Subscript[ 1],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_","\),
+                  Subscript[ ","],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_n\),
+                  Subscript[ n],
+                  Editable->False]}],
+              SequenceForm[ u, 
+                Subscript[ 1], 
+                Subscript[ ","], 
+                Subscript[ n]],
+              Editable->False], ")"}], "2"], " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_\(1 + n\)\),
+                Subscript[ 
+                  Plus[ 1, n]],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ 
+                Plus[ 1, n]]],
+            Editable->False], ")"}], " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_\(2 + n\)\),
+                Subscript[ 
+                  Plus[ 2, n]],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ 
+                Plus[ 2, n]]],
+            Editable->False], ")"}]}], "-", 
+      RowBox[{"2", " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_\(\(-1\) + n\)\),
+                Subscript[ 
+                  Plus[ -1, n]],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ 
+                Plus[ -1, n]]],
+            Editable->False], ")"}], " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_n\),
+                Subscript[ n],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ n]],
+            Editable->False], ")"}], " ", 
+        SuperscriptBox[
+          RowBox[{"(", 
+            InterpretationBox[
+              RowBox[{"u", "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_1\),
+                  Subscript[ 1],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_","\),
+                  Subscript[ ","],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_\(1 + n\)\),
+                  Subscript[ 
+                    Plus[ 1, n]],
+                  Editable->False]}],
+              SequenceForm[ u, 
+                Subscript[ 1], 
+                Subscript[ ","], 
+                Subscript[ 
+                  Plus[ 1, n]]],
+              Editable->False], ")"}], "2"], " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_\(2 + n\)\),
+                Subscript[ 
+                  Plus[ 2, n]],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ 
+                Plus[ 2, n]]],
+            Editable->False], ")"}]}], "-", 
+      RowBox[{
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_\(\(-1\) + n\)\),
+                Subscript[ 
+                  Plus[ -1, n]],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ 
+                Plus[ -1, n]]],
+            Editable->False], ")"}], " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_n\),
+                Subscript[ n],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ n]],
+            Editable->False], ")"}], " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_\(1 + n\)\),
+                Subscript[ 
+                  Plus[ 1, n]],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ 
+                Plus[ 1, n]]],
+            Editable->False], ")"}], " ", 
+        SuperscriptBox[
+          RowBox[{"(", 
+            InterpretationBox[
+              RowBox[{"u", "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_1\),
+                  Subscript[ 1],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_","\),
+                  Subscript[ ","],
+                  Editable->False], "\[InvisibleSpace]", 
+                InterpretationBox[\(\[Null]\_\(2 + n\)\),
+                  Subscript[ 
+                    Plus[ 2, n]],
+                  Editable->False]}],
+              SequenceForm[ u, 
+                Subscript[ 1], 
+                Subscript[ ","], 
+                Subscript[ 
+                  Plus[ 2, n]]],
+              Editable->False], ")"}], "2"]}], "-", 
+      RowBox[{
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_\(\(-1\) + n\)\),
+                Subscript[ 
+                  Plus[ -1, n]],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ 
+                Plus[ -1, n]]],
+            Editable->False], ")"}], " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_n\),
+                Subscript[ n],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ n]],
+            Editable->False], ")"}], " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_\(1 + n\)\),
+                Subscript[ 
+                  Plus[ 1, n]],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ 
+                Plus[ 1, n]]],
+            Editable->False], ")"}], " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_\(2 + n\)\),
+                Subscript[ 
+                  Plus[ 2, n]],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ 
+                Plus[ 2, n]]],
+            Editable->False], ")"}], " ", 
+        RowBox[{"(", 
+          InterpretationBox[
+            RowBox[{"u", "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_1\),
+                Subscript[ 1],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_","\),
+                Subscript[ ","],
+                Editable->False], "\[InvisibleSpace]", 
+              InterpretationBox[\(\[Null]\_\(3 + n\)\),
+                Subscript[ 
+                  Plus[ 3, n]],
+                Editable->False]}],
+            SequenceForm[ u, 
+              Subscript[ 1], 
+              Subscript[ ","], 
+              Subscript[ 
+                Plus[ 3, n]]],
+            Editable->False], ")"}]}]}]], "Print"],
+
+Cell[BoxData[
+    \(" "\)], "Print"],
+
+Cell[BoxData[
+    \("The flux has no free coefficients."\)], "Print"],
+
+Cell[BoxData[
+    \("Saving the flux in an output file."\)], "Print"],
+
+Cell[BoxData[
+    \(" "\)], "Print"],
+
+Cell[BoxData[
+    \("*************************** SUMMARY ***************************"\)], \
+"Print"],
+
+Cell[BoxData[
+    \(" "\)], "Print"],
+
+Cell[BoxData[
+    InterpretationBox[\("Total CPU time used in the current session is "\
+\[InvisibleSpace]3\[InvisibleSpace]" seconds."\),
+      SequenceForm[ 
+      "Total CPU time used in the current session is ", 3, " seconds."],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \(" "\)], "Print"],
+
+Cell[BoxData[
+    \("To see all the densities type: listallrhos,"\)], "Print"],
+
+Cell[BoxData[
+    \("or subscriptform[listallrhos]."\)], "Print"],
+
+Cell[BoxData[
+    \(" "\)], "Print"],
+
+Cell[BoxData[
+    \("To see the last density type: rho, or subscriptform[rho]."\)], "Print"],
+
+Cell[BoxData[
+    \(" "\)], "Print"],
+
+Cell[BoxData[
+    \("To split the density in independent pieces type: splitrho[rho],"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("or splitrho[subscriptform[rho]]."\)], "Print"],
+
+Cell[BoxData[
+    \(" "\)], "Print"],
+
+Cell[BoxData[
+    \("To see all the fluxes type: listallfluxes,"\)], "Print"],
+
+Cell[BoxData[
+    \("or subscriptform[listallfluxes]."\)], "Print"],
+
+Cell[BoxData[
+    \(" "\)], "Print"],
+
+Cell[BoxData[
+    \("To see the last flux type: flux, or subscriptform[flux]."\)], "Print"],
+
+Cell[BoxData[
+    \(" "\)], "Print"],
+
+Cell[BoxData[
+    \("To split the flux in independent pieces type: splitflux[flux],"\)], \
+"Print"],
+
+Cell[BoxData[
+    \("or splitflux[subscriptform[flux]]."\)], "Print"],
+
+Cell[BoxData[
+    \(" "\)], "Print"],
+
+Cell[BoxData[
+    \("*************************** SUMMARY ***************************"\)], \
+"Print"],
+
+Cell[BoxData[
+    \(" "\)], "Print"],
+
+Cell[BoxData[
+    \("You used the code DDEDensityFluxV3.m of August 5, 2009."\)], "Print"],
+
+Cell[BoxData[
+    \(" "\)], "Print",
+  GeneratedCell->False,
+  CellAutoOverwrite->False]
+}, Open  ]]
+},
+FrontEndVersion->"5.0 for Microsoft Windows",
+ScreenRectangle->{{0, 1280}, {0, 941}},
+ScreenStyleEnvironment->"Presentation",
+WindowSize->{1011, 651},
+WindowMargins->{{0, Automatic}, {Automatic, 25}},
+PrintingCopies->1,
+PrintingPageRange->{Automatic, Automatic},
+ShowCellLabel->False
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+Cell[1754, 51, 230, 4, 84, "Input"],
+
+Cell[CellGroupData[{
+Cell[2009, 59, 84, 1, 38, "Input"],
+Cell[2096, 62, 67, 1, 38, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[2200, 68, 62, 1, 38, "Input"],
+Cell[2265, 71, 102, 2, 28, "Print"],
+Cell[2370, 75, 101, 2, 28, "Print"],
+Cell[2474, 79, 36, 1, 28, "Print"],
+Cell[2513, 82, 216, 4, 28, "Print"],
+Cell[2732, 88, 78, 1, 28, "Print"],
+Cell[2813, 91, 88, 1, 28, "Print"],
+Cell[2904, 94, 88, 1, 28, "Print"],
+Cell[2995, 97, 90, 1, 28, "Print"],
+Cell[3088, 100, 100, 2, 28, "Print"],
+Cell[3191, 104, 63, 1, 28, "Print"],
+Cell[3257, 107, 92, 1, 28, "Print"],
+Cell[3352, 110, 97, 2, 28, "Print"],
+Cell[3452, 114, 98, 2, 28, "Print"],
+Cell[3553, 118, 111, 2, 28, "Print"],
+Cell[3667, 122, 77, 1, 28, "Print"],
+Cell[3747, 125, 49, 1, 28, "Print"],
+Cell[3799, 128, 51, 1, 28, "Print"],
+Cell[3853, 131, 56, 1, 28, "Print"],
+Cell[3912, 134, 77, 1, 28, "Print"],
+Cell[3992, 137, 92, 1, 28, "Print"],
+Cell[4087, 140, 92, 1, 28, "Print"],
+Cell[4182, 143, 92, 1, 28, "Print"],
+Cell[4277, 146, 92, 1, 28, "Print"],
+Cell[4372, 149, 92, 1, 28, "Print"],
+Cell[4467, 152, 92, 1, 28, "Print"],
+Cell[4562, 155, 92, 1, 28, "Print"],
+Cell[4657, 158, 92, 1, 28, "Print"],
+Cell[4752, 161, 318, 7, 28, "Print"],
+Cell[5073, 170, 36, 1, 28, "Print"],
+Cell[5112, 173, 283, 5, 28, "Print"],
+Cell[5398, 180, 36, 1, 28, "Print"],
+Cell[5437, 183, 4019, 104, 29, "Print"],
+Cell[9459, 289, 36, 1, 28, "Print"],
+Cell[9498, 292, 36, 1, 28, "Print"],
+Cell[9537, 295, 106, 2, 28, "Print"],
+Cell[9646, 299, 76, 1, 28, "Print"],
+Cell[9725, 302, 97, 2, 28, "Print"],
+Cell[9825, 306, 59, 1, 28, "Print"],
+Cell[9887, 309, 106, 2, 28, "Print"],
+Cell[9996, 313, 72, 1, 28, "Print"],
+Cell[10071, 316, 98, 2, 28, "Print"],
+Cell[10172, 320, 55, 1, 28, "Print"],
+Cell[10230, 323, 36, 1, 28, "Print"],
+Cell[10269, 326, 101, 2, 28, "Print"],
+Cell[10373, 330, 74, 1, 28, "Print"],
+Cell[10450, 333, 56, 1, 28, "Print"],
+Cell[10509, 336, 270, 4, 28, "Print"],
+Cell[10782, 342, 36, 1, 28, "Print"],
+Cell[10821, 345, 104, 2, 28, "Print"],
+Cell[10928, 349, 98, 2, 28, "Print"],
+Cell[11029, 353, 36, 1, 28, "Print"],
+Cell[11068, 356, 253, 5, 28, "Print"],
+Cell[11324, 363, 96, 2, 28, "Print"],
+Cell[11423, 367, 87, 1, 28, "Print"],
+Cell[11513, 370, 93, 1, 28, "Print"],
+Cell[11609, 373, 36, 1, 28, "Print"],
+Cell[11648, 376, 255, 5, 28, "Print"],
+Cell[11906, 383, 36, 1, 28, "Print"],
+Cell[11945, 386, 14624, 381, 78, "Print"],
+Cell[26572, 769, 36, 1, 28, "Print"],
+Cell[26611, 772, 88, 1, 28, "Print"],
+Cell[26702, 775, 104, 2, 28, "Print"],
+Cell[26809, 779, 103, 2, 28, "Print"],
+Cell[26915, 783, 226, 5, 28, "Print"],
+Cell[27144, 790, 79, 1, 28, "Print"],
+Cell[27226, 793, 80, 1, 28, "Print"],
+Cell[27309, 796, 98, 2, 28, "Print"],
+Cell[27410, 800, 228, 4, 28, "Print"],
+Cell[27641, 806, 98, 2, 28, "Print"],
+Cell[27742, 810, 224, 4, 28, "Print"],
+Cell[27969, 816, 86, 1, 28, "Print"],
+Cell[28058, 819, 35, 1, 28, "Print"],
+Cell[28096, 822, 79, 1, 28, "Print"],
+Cell[28178, 825, 36, 1, 28, "Print"],
+Cell[28217, 828, 502, 9, 74, "Print"],
+Cell[28722, 839, 36, 1, 28, "Print"],
+Cell[28761, 842, 70, 1, 28, "Print"],
+Cell[28834, 845, 81, 1, 28, "Print"],
+Cell[28918, 848, 263, 5, 28, "Print"],
+Cell[29184, 855, 298, 4, 28, "Message"],
+Cell[29485, 861, 59, 1, 28, "Print"],
+Cell[29547, 864, 36, 1, 28, "Print"],
+Cell[29586, 867, 196, 3, 44, "Print"],
+Cell[29785, 872, 36, 1, 28, "Print"],
+Cell[29824, 875, 105, 2, 28, "Print"],
+Cell[29932, 879, 105, 2, 28, "Print"],
+Cell[30040, 883, 36, 1, 28, "Print"],
+Cell[30079, 886, 254, 5, 28, "Print"],
+Cell[30336, 893, 72, 1, 28, "Print"],
+Cell[30411, 896, 36, 1, 28, "Print"],
+Cell[30450, 899, 100, 2, 28, "Print"],
+Cell[30553, 903, 36, 1, 28, "Print"],
+Cell[30592, 906, 61, 1, 28, "Print"],
+Cell[30656, 909, 36, 1, 28, "Print"],
+Cell[30695, 912, 14544, 381, 69, "Print"],
+Cell[45242, 1295, 36, 1, 28, "Print"],
+Cell[45281, 1298, 71, 1, 28, "Print"],
+Cell[45355, 1301, 72, 1, 28, "Print"],
+Cell[45430, 1304, 100, 2, 28, "Print"],
+Cell[45533, 1308, 36, 1, 28, "Print"],
+Cell[45572, 1311, 66, 1, 28, "Print"],
+Cell[45641, 1314, 36, 1, 28, "Print"],
+Cell[45680, 1317, 20390, 534, 78, "Print"],
+Cell[66073, 1853, 36, 1, 28, "Print"],
+Cell[66112, 1856, 69, 1, 28, "Print"],
+Cell[66184, 1859, 69, 1, 28, "Print"],
+Cell[66256, 1862, 36, 1, 28, "Print"],
+Cell[66295, 1865, 100, 2, 28, "Print"],
+Cell[66398, 1869, 36, 1, 28, "Print"],
+Cell[66437, 1872, 265, 5, 28, "Print"],
+Cell[66705, 1879, 36, 1, 28, "Print"],
+Cell[66744, 1882, 78, 1, 28, "Print"],
+Cell[66825, 1885, 65, 1, 28, "Print"],
+Cell[66893, 1888, 36, 1, 28, "Print"],
+Cell[66932, 1891, 92, 1, 28, "Print"],
+Cell[67027, 1894, 36, 1, 28, "Print"],
+Cell[67066, 1897, 100, 2, 28, "Print"],
+Cell[67169, 1901, 67, 1, 28, "Print"],
+Cell[67239, 1904, 36, 1, 28, "Print"],
+Cell[67278, 1907, 77, 1, 28, "Print"],
+Cell[67358, 1910, 67, 1, 28, "Print"],
+Cell[67428, 1913, 36, 1, 28, "Print"],
+Cell[67467, 1916, 91, 1, 28, "Print"],
+Cell[67561, 1919, 36, 1, 28, "Print"],
+Cell[67600, 1922, 99, 2, 28, "Print"],
+Cell[67702, 1926, 69, 1, 28, "Print"],
+Cell[67774, 1929, 36, 1, 28, "Print"],
+Cell[67813, 1932, 100, 2, 28, "Print"],
+Cell[67916, 1936, 36, 1, 28, "Print"],
+Cell[67955, 1939, 90, 1, 28, "Print"],
+Cell[68048, 1942, 88, 3, 28, "Print"]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+
